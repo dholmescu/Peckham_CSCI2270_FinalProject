@@ -7,17 +7,37 @@ struct possibility {
 	int nearby;
 };
 
+struct rows {
+	std::vector<possibility> row;
+};
+
 struct minefeild {
-	std::vector<std::vector<possibility>> board;
+	std::vector<rows> board;
+};
+
+struct cords {
+	int x;
+	int y;
+	cords() {
+
+	}
+	cords(int xin, int yin) {
+		x = xin;
+		y = yin;
+	}
 };
 
 class MineSweeperGame {
 public:
 		MineSweeperGame(int rows, int collums, int mines);
+		MineSweeperGame();
 		~MineSweeperGame();
 		void flagsquare(int x,int y);
 		void cheaksquare(int x,int y);
 		void printBoard();
+		cords requestcords();
+		bool active;
+		void showall();
 		//x is collums, y is rows
 private:
 		minefeild* activeBoard;
