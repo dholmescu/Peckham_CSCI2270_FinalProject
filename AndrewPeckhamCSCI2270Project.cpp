@@ -17,7 +17,11 @@ int main() {
 				"3. Reprint Board" << endl <<
 				"4. New Game" << endl <<
 				"5. Exit" << endl;
-			cin >> menuchoice;
+			while (!(cin >> menuchoice)) {
+				cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				cout << "Invalid input. Try again:";
+			}
 			//cin.ignore();
 			if (menuchoice == 1) {
 				//Flag
@@ -47,6 +51,7 @@ int main() {
 				currentGame->showall();
 			}
 			else {
+				cin.clear();
 				cin.ignore();
 				cout << "ERROR: invalid input";
 			}

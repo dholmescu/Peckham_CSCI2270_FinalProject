@@ -25,13 +25,13 @@ MineSweeperGame::MineSweeperGame()
 	int newcollums = 0;
 	int newmines = 0;
 	std::cout << "number of rows: ";
-	std::cin.ignore();
+	//std::cin.ignore();
 	std::cin >> newrows;
-	std::cout << "number of collums: ";
-	std::cin.ignore();
+	std::cout << "number of columns: ";
+	//std::cin.ignore();
 	std::cin >> newcollums;
 	std::cout << "number of mines: ";
-	std::cin.ignore();
+	//std::cin.ignore();
 	std::cin >> newmines;
 	activeBoard = new minefeild;
 	activerows = newrows;
@@ -58,7 +58,6 @@ void MineSweeperGame::flagsquare(int x,int y)
 	activeBoard->board[y].row[x].symbol = 'X';
 }
 
-//error in cheaksquare;
 void MineSweeperGame::cheaksquare(int x,int y)
 {
 	if (activeBoard->board[x].row[y].symbol == 'X') {
@@ -66,12 +65,12 @@ void MineSweeperGame::cheaksquare(int x,int y)
 		return;
 	}
 	else if (activeBoard->board[x].row[y].mine) {
-		std::cout << "boom" << std::endl;
+		//std::cout << "boom" << std::endl;
 		GameOver();
 		return;
 	}
 	else if ((activeBoard->board[x].row[y].nearby == 0) && (activeBoard->board[x].row[y].symbol == 'O')) {
-		std::cout << x << y << std::endl;
+		//if std::cout << x << y << std::endl;
 		cords temp(x, y);
 		activeBoard->board[x].row[y].symbol = ' ';
 		if (x == 0) {
@@ -139,7 +138,7 @@ void MineSweeperGame::cheaksquare(int x,int y)
 			}
 		}
 	}
-	else {
+	else if(!activeBoard->board[x].row[y].symbol == ' '){
 		activeBoard->board[x].row[y].symbol = '0' + activeBoard->board[x].row[y].nearby;
 	}
 }
@@ -161,13 +160,13 @@ cords MineSweeperGame::requestcords()
 	while (!(std::cin >> tmp.x) && tmp.x < activecollums&&tmp.x >= 0) {
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Must be a number between 0 and" << activecollums - 1 << std::endl << "Try again:";
+		std::cout << "Must be a integer between 0 and" << activecollums - 1 << std::endl << "Try again:";
 	}
 	std::cout << "y:";
 	while (!(std::cin >> tmp.y) && tmp.y < activerows&&tmp.y >= 0) {
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Must be a number between 0 and" << activerows - 1 << std::endl << "Try again:";
+		std::cout << "Must be an integer between 0 and" << activerows - 1 << std::endl << "Try again:";
 	}
 	return tmp;
 }
@@ -195,7 +194,7 @@ void MineSweeperGame::setnearby(int x, int y)
 {
 	int count = 0;
 	//possibility* target = &activeBoard->board[y].row[x];
-	std::cout << x << "," << y << std::endl;
+	//std::cout << x << "," << y << std::endl;
 	if (x == 0) {
 		if (y == 0) {
 			if (activeBoard->board[y + 1].row[x].mine == 1) {
@@ -340,7 +339,7 @@ void MineSweeperGame::setnearby(int x, int y)
 			}
 		}
 	}
-	std::cout << count << std::endl;
+	//std::cout << count << std::endl;
 	activeBoard->board[y].row[x].nearby = count;
 }
 
