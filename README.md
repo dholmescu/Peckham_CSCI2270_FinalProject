@@ -4,10 +4,10 @@ Made by: Andrew Peckham
 
 My project is a Minesweeper game. 
 ##Desired improvements include:
-  a grid that doesn't shift around with numbers for rows and columns
-  making sure first move is not a bomb
-  fixing the memory leak
-  fixing all spelling errors
+1. a grid that doesn't shift around with numbers for rows and columns
+2. making sure first move is not a bomb
+3. fixing the memory leak
+4. fixing all spelling errors
 
 ##Requirements:
   C++ 11,
