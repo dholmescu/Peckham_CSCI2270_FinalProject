@@ -32,6 +32,7 @@ This option will end the current game and start a new game. You will be asked fo
 -Memory leak when creating a new game
 -Stability problems beyond 900 squares (30x30) (May be computer dependent)
 -Stability problems beyond 20 mines (May be computer dependent)
+-select space function doesn't always chain.
 
 ##Desired improvements include:
 1. a grid that doesn't shift around that also has lables for rows and columns
