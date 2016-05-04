@@ -33,7 +33,7 @@ public:
 		MineSweeperGame();
 		~MineSweeperGame();
 		void flagsquare(int x,int y);
-		void cheaksquare(int x,int y);
+		void checksquare(int x,int y);
 		void printBoard();
 		cords requestcords();
 		bool active;
