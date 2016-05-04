@@ -31,7 +31,7 @@ int main() {
 			else if (menuchoice == 2) {
 				//select
 				cordin = currentGame->requestcords();
-				currentGame->cheaksquare(cordin.x, cordin.y);
+				currentGame->checksquare(cordin.x, cordin.y);
 			}
 			else if (menuchoice == 3) {
 				//print
