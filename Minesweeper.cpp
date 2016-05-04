@@ -58,16 +58,27 @@ void MineSweeperGame::flagsquare(int x,int y)
 	activeBoard->board[y].row[x].symbol = 'X';
 }
 
-void MineSweeperGame::cheaksquare(int x,int y)
+void MineSweeperGame::flagsquare(int x,int y)
 {
+	activeBoard->board[y].row[x].symbol = 'X';
+}
+
+void MineSweeperGame::checksquare(int x,int y)
+{
+    int counterc = 0;
 	if (activeBoard->board[x].row[y].symbol == 'X') {
 		std::cout << "square flagged" << std::endl;
 		return;
 	}
 	else if (activeBoard->board[x].row[y].mine) {
 		//std::cout << "boom" << std::endl;
+		if(counterc = 0){
+            cout<<"Dont pick this square!"<<endl;
+		}
+		else{
 		GameOver();
 		return;
+	}
 	}
 	else if ((activeBoard->board[x].row[y].nearby == 0) && (activeBoard->board[x].row[y].symbol == 'O')) {
 		//if std::cout << x << y << std::endl;
@@ -75,72 +86,73 @@ void MineSweeperGame::cheaksquare(int x,int y)
 		activeBoard->board[x].row[y].symbol = ' ';
 		if (x == 0) {
 			if (y == 0) {
-				cheaksquare(temp.x++, temp.y++);
-				cheaksquare(temp.x++, temp.y);
-				cheaksquare(temp.x, temp.y++);
+				checksquare(temp.x++, temp.y++);
+				checksquare(temp.x++, temp.y);
+				checksquare(temp.x, temp.y++);
 			}
 			else if (y == activerows - 1) {
-				cheaksquare(temp.x++, temp.y);
-				cheaksquare(temp.x++, temp.y--);
-				cheaksquare(temp.x, temp.y--);
+				checksquare(temp.x++, temp.y);
+				checksquare(temp.x++, temp.y--);
+				checksquare(temp.x, temp.y--);
 			}
 			else {
-				cheaksquare(temp.x++, temp.y++);
-				cheaksquare(temp.x++, temp.y);
-				cheaksquare(temp.x++, temp.y--);
-				cheaksquare(temp.x, temp.y++);
-				cheaksquare(temp.x, temp.y--);
+				checksquare(temp.x++, temp.y++);
+				checksquare(temp.x++, temp.y);
+				checksquare(temp.x++, temp.y--);
+				checksquare(temp.x, temp.y++);
+				checksquare(temp.x, temp.y--);
 			}
 		}
 		else if (x == activecollums - 1) {
 			if (y == 0) {
-				cheaksquare(temp.x, temp.y++);
-				cheaksquare(temp.x--, temp.y++);
-				cheaksquare(temp.x--, temp.y);
+				checksquare(temp.x, temp.y++);
+				checksquare(temp.x--, temp.y++);
+				checksquare(temp.x--, temp.y);
 			}
 			else if (y = activerows - 1) {
-				cheaksquare(temp.x, temp.y--);
-				cheaksquare(temp.x--, temp.y);
-				cheaksquare(temp.x--, temp.y--);
+				checksquare(temp.x, temp.y--);
+				checksquare(temp.x--, temp.y);
+				checksquare(temp.x--, temp.y--);
 			}
 			else {
-				cheaksquare(temp.x, temp.y++);
-				cheaksquare(temp.x, temp.y--);
-				cheaksquare(temp.x--, temp.y++);
-				cheaksquare(temp.x--, temp.y);
-				cheaksquare(temp.x--, temp.y--);
+				checksquare(temp.x, temp.y++);
+				checksquare(temp.x, temp.y--);
+				checksquare(temp.x--, temp.y++);
+				checksquare(temp.x--, temp.y);
+				checksquare(temp.x--, temp.y--);
 			}
 		}
 		else {
 			if (y == 0) {
-				cheaksquare(temp.x++, temp.y++);
-				cheaksquare(temp.x++, temp.y);
-				cheaksquare(temp.x, temp.y++);
-				cheaksquare(temp.x--, temp.y++);
-				cheaksquare(temp.x--, temp.y);
+				checksquare(temp.x++, temp.y++);
+				checksquare(temp.x++, temp.y);
+				checksquare(temp.x, temp.y++);
+				checksquare(temp.x--, temp.y++);
+				checksquare(temp.x--, temp.y);
 			}
 			else if (y == activerows - 1) {
-				cheaksquare(temp.x++, temp.y);
-				cheaksquare(temp.x++, temp.y--);
-				cheaksquare(temp.x, temp.y--);
-				cheaksquare(temp.x--, temp.y);
-				cheaksquare(temp.x--, temp.y--);
+				checksquare(temp.x++, temp.y);
+				checksquare(temp.x++, temp.y--);
+				checksquare(temp.x, temp.y--);
+				checksquare(temp.x--, temp.y);
+				checksquare(temp.x--, temp.y--);
 			}
 			else {
-				cheaksquare(temp.x++, temp.y++);
-				cheaksquare(temp.x++, temp.y);
-				cheaksquare(temp.x++, temp.y--);
-				cheaksquare(temp.x, temp.y++);
-				cheaksquare(temp.x, temp.y--);
-				cheaksquare(temp.x--, temp.y++);
-				cheaksquare(temp.x--, temp.y);
-				cheaksquare(temp.x--, temp.y--);
+				checksquare(temp.x++, temp.y++);
+				checksquare(temp.x++, temp.y);
+				checksquare(temp.x++, temp.y--);
+				checksquare(temp.x, temp.y++);
+				checksquare(temp.x, temp.y--);
+				checksquare(temp.x--, temp.y++);
+				checksquare(temp.x--, temp.y);
+				checksquare(temp.x--, temp.y--);
 			}
 		}
 	}
 	else if(!activeBoard->board[x].row[y].symbol == ' '){
 		activeBoard->board[x].row[y].symbol = '0' + activeBoard->board[x].row[y].nearby;
 	}
+	counterc = counterc + 1;
 }
 
 void MineSweeperGame::printBoard()
